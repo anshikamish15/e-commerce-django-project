@@ -1,0 +1,46 @@
+/* body{
+    background-size: cover;
+} */
+.navbar{
+    margin-top: 4px;
+    height: 80px;
+}
+
+.navbar-brand{
+    padding-left: 80px;
+}
+
+ul{
+    padding-right: 80px;
+}
+
+ul .nav-item{
+    margin-right: 20px;
+    font-size: 20px;
+}
+
+#signup-shadow{ 
+    /* border: 0.01px solid #888899; */
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 8px 15px 10px rgba(65, 60, 117, 0.8), 5px 15px 10px #353535;
+    /* background: rgba(24, 138, 173, 1.0);
+        background: -webkit-radial-gradient(center, rgba(24, 138, 173, 1.0), rgba(12, 1, 120, 1.0));
+        background: -moz-radial-gradient(center, rgba(24, 138, 173, 1.0), rgba(12, 1, 120, 1.0));
+        background: radial-gradient(ellipse at center, rgba(24, 138, 173, 1.0), rgba(12, 1, 120, 1.0)); */
+    backdrop-filter: blur(20px);
+}
+
+#signup-shadow1{ 
+    /* border: 0.01px solid #888899; */
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 8px 15px 10px rgba(86, 86, 94, 0.8), 5px 15px 10px #353535;
+    background-color: white;
+    backdrop-filter: blur(20px);
+}
+
+.btn-success, .btn-outline-danger{
+    width: 380px;
+}
+

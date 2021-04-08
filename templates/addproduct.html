@@ -1,0 +1,87 @@
+{% extends 'welcomeseller.html' %}
+
+{% block 'body-img' %}
+<body style="background-image: url('/static/prod.jpg'); background-size: cover;">
+{% endblock %}
+
+{% block 'maindata' %}
+<div class="container" style="margin-top: 100px; ">
+    <div class="row">
+        <div class="col-md-4"> </div>
+        <div class="col-md-4" style=" background-color: honeydew; padding: 40px; width: 500px; height: 600px; border: 0.5px solid greenyellow;"> 
+            <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+                <div class="form-group">
+                   <h5 style="text-align: center;">Add Product</h5>
+                </div><hr>
+                <div class="form-group">
+                    <input type="text" name="pro_name" class="form-control" placeholder="Product Name *"  required/>
+                </div><br>
+                <div class="form-group">
+                 <input type="text" name="pro_desc" class="form-control" placeholder="Product_desc *" required/>
+                </div><br>
+                <div class="form-group">
+                    <input type="number" name="pro_price" class="form-control" placeholder="Product Price *"  required/>
+                </div><br>
+                <div class="form-group">
+                    <input type="file" name="pro_img" class="form-control" >
+                </div><br>
+                <div class="form-group">
+                    <input type="number" name="pro_qty" class="form-control" placeholder="Product Qunatity *"  required/>
+                </div><br>
+                <div class="form-group">
+                    <div class = "row">
+                        <div class="col" >
+                            <select class="form-control" name="pro_cat" id="select" style="width: 350px;">
+                                <option selected>Category</option>
+                                {% for i in catObj%}
+                                <option value={{ i.id }}>{{ i.catName }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class = "col">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="border-radius: 50%;"><i class="fa fa-plus-circle" aria-hidden="true" style=" width: fit-content;"></i></button>
+                        </div>
+
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel" style="text-align: center;">Add Category</h5>
+                                </div>
+                                    <div class="modal-body" style="text-align: center;">
+                                        <input type="text" name="addcat" id="myInput" placeholder="Your Category">
+                                        </div>
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" id="clo" onclick="addd()" class="btn btn-primary" data-bs-dismiss="modal">Add</button>
+                                        </div>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                </div><br><br>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success" style="margin-left: 20px;">Submit</button>
+                </div>    
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    var myModal = document.getElementById('myModal')
+    var myInput = document.getElementById('myInput')
+
+    myModal.addEventListener('shown.bs.modal', function () {
+        myInput.focus()
+    })
+
+    function addd(){
+        var val = document.getElementById('myInput').value
+        $('#select').append($("<option></option>")
+                    .attr("value", val)
+                    .text(val)); 
+    }
+</script>
+{% endblock %}

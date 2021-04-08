@@ -1,0 +1,133 @@
+{% extends 'index.html' %}
+
+{% block 'body-img' %}
+<body style="background-image: url('/static/online-shopping-wallpapers.jpg'); background-size: cover;">
+{% endblock %}
+
+{% block 'maindata' %}
+<div class="container" style="margin-top:60px;">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4" id="signup-shadow1" style="padding: 30px;"> 
+        
+          <form method="POST">
+                {% csrf_token %}
+                <div class="form-group" >
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="First name" name="first" required>
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Last name" name="last" required>
+                        </div>
+                    </div></br>
+                    <div class="form-row">
+                        <div class="col">
+                            <input type="text" class="form-control" name="username" placeholder="username" required>
+                        </div>
+                    </div><br>
+                    <div class="form-row">
+                        <div class="col">
+                            <select class="form-select" name="role" required>
+                                <option selected>Role</option>
+                                <option value="Buyer">Buyer</option>
+                                <option value="Seller">Seller</option>
+                                <!-- <option value="1">Other</option> -->
+                            </select> 
+                        </div>
+                    </div></br>
+                    <!-- <div class="form-row">
+                        <div class="col">
+                            <input type="date" class="form-control" placeholder="Date of Birth" required>
+                        </div>
+                    </div></br> -->
+                    <div class="form-row">
+                        <div class="col">
+                            <input type="email" class="form-control" name="email" placeholder="Email Address" required>
+                        </div>
+                    </div></br>
+                    <div class="form-row">
+                        <div class="col">
+                            <input type="number" class="form-control" name="mobile" id="mob" placeholder="Mobile Number" pattern="[0-9]{10)" required>
+                        </div>
+                    </div></br>
+                    <div class="form-row">
+                        <div class="col">
+                            <div class = "input-group">
+                            <input type="password" class="form-control" id="pass" placeholder="Password" required>
+                            <div class = "input-group-prepend">
+                                <span class="input-group-text" onclick="see()" style="height: 45px;"><i class="fa fa-eye-slash" id = "eye" aria-hidden="true"></i></span>
+                            </div>
+                        </div>
+                        </div>
+                    </div></br>
+                    <div class="form-row">
+                        <div class="col">
+                            <div class = "input-group">
+                            <input type="password" class="form-control" id="pass1" name="password" placeholder="Confirm Password" required>
+                        
+                        <div class = "input-group-prepend">
+                            <span class="input-group-text" onclick="see1()" style="height: 45px;"><i class="fa fa-eye-slash" id="eye1" aria-hidden="true"></i></span>
+                        </div>
+                    </div>
+                    </div>
+                    </div></br>
+                    <div class="form-row">
+                        <div class="col">
+                            <input type="checkbox" class="form-check-input" id="tc" required>
+                            <label class="form-check-label" style="color: grey;">Terms and conditions </label>
+                        </div>
+                    </div></br>
+                    <div class="form-row">
+                        <div class="col">
+                            <button type="submit" class="btn btn-success btn-block" onclick="valida()">Create Account</button>
+                        </div>
+                    </div></br>
+                
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function valida(){
+            var pw = document.getElementById("pass").value;
+            var pw1 = document.getElementById("pass1").value;
+            if (pw != pw1){
+                alert("password did not match");
+            }
+
+            var mobil = document.getElementById("mob");
+            var patter = /^\d{10}$/;
+            if(mobil.value.match(patter)){
+                return true
+            }
+            else{
+                alert("enter 10 digit mobile number");
+            }
+        }
+        function see(){
+            var pw = document.getElementById("pass");
+            if(pw.type === "password"){
+                    pw.type = "text";
+                    document.getElementById("eye").className="fa fa-eye"
+            }
+            else{
+                    pw.type = "password";
+                    document.getElementById("eye").className="fa fa-eye-slash"
+            }
+        }
+        function see1(){
+            var pw1 = document.getElementById("pass1");
+            if(pw1.type === "password"){
+                    pw1.type = "text";
+                    document.getElementById("eye1").className="fa fa-eye"
+            }
+            else{
+                    pw1.type = "password";
+                    document.getElementById("eye").className="fa fa-eye-slash"
+            }
+        }
+    </script>
+{% endblock %}

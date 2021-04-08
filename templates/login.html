@@ -1,0 +1,58 @@
+{% extends 'index.html' %}
+
+{% block 'body-img' %}
+<body style="background-image: url('/static/girl.jpg'); background-size: cover;">
+{% endblock %}
+
+{% block 'maindata' %}
+
+{% if messages %}
+		{% for m in messages %}
+		<script type="text/javascript"> alert("{{ m }}")</script>
+		{% endfor %}
+{% endif %}
+
+
+<div class="container" style="margin-top:60px; color: whitesmoke;">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4" id="signup-shadow" style="padding: 30px;"> 
+          <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="username">Username:</label>
+              <div class = "input-group">
+                <div class = "input-group-prepend">
+                  <span class="input-group-text " id="basic-addon1"><i class="fa fa-user" aria-hidden="true" style="height: 25px;"></i></span>
+                </div>
+                <input type="text" class="form-control" name="username" aria-describedby="basic-addon1">
+              </div>
+            </div>
+            <br>
+            <div class="form-group">
+              <label >Password:</label>
+              <div class = "input-group">
+                <div class = "input-group-prepend">
+                  <span class="input-group-text" id="basic-addon2"><i class="fa fa-key" aria-hidden="true" style="height: 25px;"></i></span>
+                </div>
+                <input type="password" class="form-control" name="pwd" aria-describedby="basic-addon2">
+              </div>
+            </div>
+          </br>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block" style="width: 380px;">Login</button>
+          </div>
+            <a href="#" style="color: whitesmoke;">Forgotten password?</a></br></br>
+            <p style="text-align: center;">OR</p>
+            <button type="submit" class="btn btn-danger btn-block"style="width: 190px;"><i class="fa fa-envelope" aria-hidden="true">&nbsp;</i>Gmail</button>
+            <button type="submit" class="btn btn-info btn-block" style="width: 180px;"><i class="fa fa-facebook" aria-hidden="true">&nbsp;&nbsp;</i>Facebook</button>
+        </br>
+          <hr style="border-top: 1px solid #dee2e647;">
+            <button type="submit" class="btn btn-success">
+              <a href="" style="color: white; text-decoration: none;">Sign Up</a></button>
+          </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
